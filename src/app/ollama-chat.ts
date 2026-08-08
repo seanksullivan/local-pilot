@@ -172,21 +172,22 @@ class OllamaChatApp {
 
     this.ragToggleSubEl.textContent = config.description;
     this.chatSubtitleEl.textContent = `${config.label} · local Ollama`;
-    this.systemHintEl.textContent = config.systemPresetLabel ?? config.label;
+    const presets = config.systemPresets ?? [];
+    this.systemHintEl.textContent = presets[0]?.label ?? config.label;
     this.textInput.placeholder = `Ask about ${config.label}…`;
 
-    const presetText = config.systemPresetText ?? config.systemPrompt;
+    const presetText = presets[0]?.text ?? config.systemPrompt;
     this.systemInput.value = presetText;
 
     this.systemPresetsEl.innerHTML = '';
-    if (config.systemPresetLabel && config.systemPresetText) {
+    for (const preset of presets) {
       const btn = document.createElement('button');
       btn.className = 'sample-system-btn';
       btn.type = 'button';
-      btn.textContent = config.systemPresetLabel;
-      btn.dataset.text = config.systemPresetText;
+      btn.textContent = preset.label;
       btn.addEventListener('click', () => {
-        this.systemInput.value = config.systemPresetText!;
+        this.systemInput.value = preset.text;
+        this.systemHintEl.textContent = preset.label;
       });
       this.systemPresetsEl.appendChild(btn);
     }
