@@ -4,7 +4,7 @@ Focused **Probate Chat** app with optional browser-side RAG over one or more sql
 
 ## Prerequisites
 
-1. **Node.js** + **pnpm**
+1. **Node.js** with **npm** or **pnpm**
 2. **Ollama** running locally (`ollama serve` on port `11434`)
 3. At least one chat model, e.g.:
 
@@ -17,9 +17,11 @@ RAG retrieval is **lexical** (keyword overlap on chunk text). No separate embedd
 ## Setup
 
 ```bash
-pnpm install
-pnpm dev
+npm install
+npm run dev
 ```
+
+Or with pnpm: `pnpm install` / `pnpm dev`.
 
 Open http://localhost:5173 — Vite proxies `/ollama` → `http://127.0.0.1:11434`.
 
@@ -48,8 +50,8 @@ See [`public/data/README.md`](public/data/README.md) for schema and journal-mode
 
 ## Scripts
 
-| Script | Command |
-| --- | --- |
-| `pnpm dev` | Start Vite dev server |
-| `pnpm build` | Typecheck + production build |
-| `pnpm preview` | Preview production build |
+| Script | npm | pnpm |
+| --- | --- | --- |
+| Dev server | `npm run dev` | `pnpm dev` |
+| Typecheck + build | `npm run build` | `pnpm build` |
+| Preview build | `npm run preview` | `pnpm preview` |
