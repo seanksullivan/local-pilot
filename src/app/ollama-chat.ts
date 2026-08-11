@@ -25,7 +25,7 @@ class OllamaChatApp {
 
   private modelName = '';
   private maxTokens = 3072;
-  private temperature = 1.0;
+  private temperature = 0.4;
   private topK = 1;
   private ragEnabled = true;
   private ragTopK = 10;
